@@ -1,22 +1,19 @@
 package com.example.bluesnow_zenbo2;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.asus.robotframework.API.RobotCallback;
 import com.asus.robotframework.API.RobotCmdState;
 import com.asus.robotframework.API.RobotCommand;
 import com.asus.robotframework.API.RobotErrorCode;
-import com.asus.robotframework.API.RobotFace;
 
 import org.json.JSONObject;
 
@@ -24,21 +21,17 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
-import java.util.HashMap;
-import java.util.Map;
 
-public class MainActivity2 extends RobotActivity {
+public class MainActivity2 extends AppCompatActivity {
     TextView textt;
     TextView text;
     String ip,port;
     Socket socket;
     String JSONout = "";
+    Action action= new Action("");
     //String text="fuck";
     Button face,front,right,left,stop,back;
 
-    public MainActivity2(RobotCallback robotCallback, RobotCallback.Listen robotListenCallback) {
-        super(robotCallback, robotListenCallback);
-    }
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -47,9 +40,7 @@ public class MainActivity2 extends RobotActivity {
         setContentView(R.layout.activity_main2);
         initViewElement();
         //robotAPI.robot.setExpression(RobotFace.DOUBTING);
-        Robot_Action robot_action = new Robot_Action();
-        robot_action.setact("");
-        robot_action.setmsg("");
+
         // get data from MainActivity
         Intent it = this.getIntent();
         if(it != null){
@@ -64,8 +55,8 @@ public class MainActivity2 extends RobotActivity {
             public void onClick(View view) {
                 if(socket.isConnected()){
                     //text.setText("yes");
-                    robot_action.setact("face");
-                    JSONout = new JSONObject(robot_action.Mapping()).toString();
+                    action.setact("face");
+                    JSONout = new JSONObject(action.Mapping()).toString();
                     Robot_Write(JSONout);
                 }
                 else{
@@ -78,8 +69,8 @@ public class MainActivity2 extends RobotActivity {
             public void onClick(View view) {
                 if(socket.isConnected()){
                     //text.setText("yes");
-                    robot_action.setact("stop");
-                    JSONout = new JSONObject(robot_action.Mapping()).toString();
+                    action.setact("stop");
+                    JSONout = new JSONObject(action.Mapping()).toString();
                     Robot_Write(JSONout);
                 }
                 else{
@@ -92,8 +83,8 @@ public class MainActivity2 extends RobotActivity {
             public void onClick(View view) {
                 if(socket.isConnected()){
                     //text.setText("yes");
-                    robot_action.setact("front");
-                    JSONout = new JSONObject(robot_action.Mapping()).toString();
+                    action.setact("front");
+                    JSONout = new JSONObject(action.Mapping()).toString();
                     Robot_Write(JSONout);
                 }
                 else{
@@ -106,8 +97,8 @@ public class MainActivity2 extends RobotActivity {
             public void onClick(View view) {
                 if(socket.isConnected()){
                     //text.setText("yes");
-                    robot_action.setact("back");
-                    JSONout = new JSONObject(robot_action.Mapping()).toString();
+                    action.setact("back");
+                    JSONout = new JSONObject(action.Mapping()).toString();
                     Robot_Write(JSONout);
                 }
                 else{
@@ -120,8 +111,8 @@ public class MainActivity2 extends RobotActivity {
             public void onClick(View view) {
                 if(socket.isConnected()){
                     //text.setText("yes");
-                    robot_action.setact("right");
-                    JSONout = new JSONObject(robot_action.Mapping()).toString();
+                    action.setact("right");
+                    JSONout = new JSONObject(action.Mapping()).toString();
                     Robot_Write(JSONout);
                 }
                 else{
@@ -134,8 +125,8 @@ public class MainActivity2 extends RobotActivity {
             public void onClick(View view) {
                 if(socket.isConnected()){
                     //text.setText("yes");
-                    robot_action.setact("left");
-                    JSONout = new JSONObject(robot_action.Mapping()).toString();
+                    action.setact("left");
+                    JSONout = new JSONObject(action.Mapping()).toString();
                     Robot_Write(JSONout);
                 }
                 else{
@@ -271,38 +262,7 @@ public class MainActivity2 extends RobotActivity {
 
         }
     };
-    public MainActivity2() {
-        super(robotCallback, robotListenCallback);
-    }
 
 }
 
-class Robot_Action
-{
-    String act,msg;
-    public Robot_Action(){
-        super();
-    }
 
-    public Robot_Action(String act, String msg)
-    {
-        super();
-        this.act=act;
-        this.msg=msg;
-    }
-    public void setact(String act)
-    {
-        this.act=act;
-    }
-    public  void setmsg(String msg)
-    {
-        this.msg=msg;
-    }
-    public Map Mapping(){
-        Map<String,String> map = new HashMap<String,String>();
-        map.put("act",act);
-        map.put("msg",msg);
-        return map;
-    }
-
-}
