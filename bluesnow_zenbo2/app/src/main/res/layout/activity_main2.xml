@@ -18,13 +18,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/text4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="165dp"
-        tools:layout_editor_absoluteY="291dp" />
-
     <Button
         android:id="@+id/back"
         android:layout_width="wrap_content"
@@ -83,4 +76,30 @@
         app:layout_constraintEnd_toStartOf="@+id/right"
         app:layout_constraintStart_toEndOf="@+id/left"
         app:layout_constraintTop_toBottomOf="@+id/front" />
+
+    <Button
+        android:id="@+id/lookatuser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="157dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="167dp"
+        android:layout_marginBottom="33dp"
+        android:text="look"
+        app:layout_constraintBottom_toTopOf="@+id/front"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/face" />
+
+    <Button
+        android:id="@+id/temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginEnd="167dp"
+        android:layout_marginBottom="68dp"
+        android:text="temp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

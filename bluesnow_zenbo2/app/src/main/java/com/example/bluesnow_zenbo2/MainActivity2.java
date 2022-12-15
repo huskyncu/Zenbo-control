@@ -30,7 +30,7 @@ public class MainActivity2 extends AppCompatActivity {
     String JSONout = "";
     Action action= new Action("");
     //String text="fuck";
-    Button face,front,right,left,stop,back;
+    Button face,front,right,left,stop,back,lookatuser,temp;
 
 
     @SuppressLint("SetTextI18n")
@@ -134,6 +134,34 @@ public class MainActivity2 extends AppCompatActivity {
                 }
             }
         });
+        lookatuser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(socket.isConnected()){
+                    //text.setText("yes");
+                    action.setact("lookatuser");
+                    JSONout = new JSONObject(action.Mapping()).toString();
+                    Robot_Write(JSONout);
+                }
+                else{
+                    Log.d("sssss","connect fail");
+                }
+            }
+        });
+        temp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(socket.isConnected()){
+                    //text.setText("yes");
+                    action.setact("temp");
+                    JSONout = new JSONObject(action.Mapping()).toString();
+                    Robot_Write(JSONout);
+                }
+                else{
+                    Log.d("sssss","connect fail");
+                }
+            }
+        });
     }
     public void connect()
     {
@@ -180,7 +208,8 @@ public class MainActivity2 extends AppCompatActivity {
         right = (Button) findViewById(R.id.right);
         left = (Button) findViewById(R.id.left);
         stop = (Button) findViewById(R.id.stop);
-        text = (TextView) findViewById(R.id.text4);
+        lookatuser = (Button) findViewById(R.id.lookatuser);
+        temp = (Button) findViewById(R.id.temp);
     }
 
 
